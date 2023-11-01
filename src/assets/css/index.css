@@ -1,0 +1,44 @@
+@font-face {
+  font-family: overAll;
+  src: url("./resources/LEMONMILK-Regular.otf");
+}
+
+body,
+html,
+#root {
+  height: 100%;
+  width: 100%;
+  font-family: overAll;
+  letter-spacing: 2px;
+  font-size: 18px;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sticky {
+  position: fixed;
+  right: 0;
+  top: 0;
+  left: 0;
+  background: rgba(242, 213, 213, 0.15);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+.padding-sticky {
+  padding-top: 50px;
+}
+
+.glass-morph {
+  background: rgba(242, 213, 213, 0.15);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(242, 213, 213, 0.075);
+  border-radius: 7px;
+}
+/*#header a.active {
+  background-color: black;
+}*/

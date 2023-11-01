@@ -1,17 +1,43 @@
-import { useState } from "react";
-import UseCheckMobileScreen from "./assets/components/CheckView";
+//libraries
+import { useState, useEffect } from "react";
+import axios from "axios";
+import styled from "styled-components";
+//router
+import { Outlet } from "react-router-dom";
+//Pages
+import Header from "./assets/components/Header";
+//images
+import background from "./assets/resources/bg.gif";
 
 const App = () => {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <h1>Our First Test</h1>
-      <h2>
-        <UseCheckMobileScreen />
-      </h2>
+      <MainBG id="main">
+        <Header />
+
+        <Align>
+          <Outlet />
+        </Align>
+      </MainBG>
     </>
   );
 };
 
 export default App;
+
+const MainBG = styled.div`
+  height: auto;
+  min-height: 100%;
+  background-image: url(${background});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+`;
+
+const Align = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  padding-inline: 1rem;
+  margin-inline: 1rem;
+`;

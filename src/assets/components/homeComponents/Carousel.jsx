@@ -50,11 +50,17 @@ const Carousel = (carouselData) => {
             transform: `translate3d(${-currentIndex * 100}%, 0, 0)`,
           }}
         >
-          {data.map((carousel) => {
+          {data.map((carousel, index) => {
             return (
               <>
-                <ImageCon key={carousel.id}>
-                  <SliderImage src={carousel.background_image}></SliderImage>
+                <ImageCon
+                  className="center"
+                  key={carousel.id + "-images" + index}
+                >
+                  {" "}
+                  <div className="center">
+                    <SliderImage src={carousel.background_image}></SliderImage>{" "}
+                  </div>
                 </ImageCon>
               </>
             );
@@ -92,14 +98,19 @@ const SlidesShowSlider = styled.ul`
 
 const ImageCon = styled.li`
   display: inline-block;
+  object-fit: cover;
 `;
 const SliderImage = styled.img`
+  object-fit: cover;
   width: 100%;
-  height: auto;
+  height: 600px;
+  @media (max-width: 700px) {
+    height: 400px;
+  }
 `;
 
 const SliderDots = styled.div`
-  position: absolute;
+  position: relative;
   bottom: 0;
   text-align: center;
 `;
@@ -107,9 +118,10 @@ const DotStyle = styled.div`
   display: inline-block;
   height: 10px;
   width: 10px;
-  position: absolute;
+  margin-inline: 5px;
   border-radius: 50%;
-  left: 50%;
+  position: static;
+  bottom: 0;
   background-color: #c4c4c4;
 `;
 

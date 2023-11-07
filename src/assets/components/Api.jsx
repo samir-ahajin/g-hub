@@ -3,6 +3,7 @@ import { defer } from "react-router-dom";
 import format from "date-fns/format";
 
 const url = "https://api.rawg.io/api";
+const category = "/genres";
 const key = "key=05a8cbebe2554a548f56f88ab415dd05";
 
 export const getDates = () => {
@@ -13,16 +14,16 @@ export const getDates = () => {
     past30: format(prior, "yyyy-MM-dd"),
     today: format(new Date(t), "yyyy-MM-dd"),
   };
+
   return dates;
 };
 
-const todaysQuery = `dates=${getDates().past30},${
-  getDates().today
-}&ordering=-added&page_size=10`;
+const todaysQuery = ``;
 
 const gameImageLoader = async ({ query = todaysQuery }) => {
+  console.log(query);
   try {
-    const response = await axios.get(`${url}/games?${query}&${key}`);
+    const response = await axios.get(`${url}${category}?${query}&${key}`);
 
     console.log(getDates());
     console.log(response.data);

@@ -13,7 +13,9 @@ const App = () => {
   return (
     <>
       <MainBG id="main">
-        <Header />
+        <HeadCon>
+          <Header />
+        </HeadCon>
 
         <Align>
           <Outlet />
@@ -25,19 +27,14 @@ const App = () => {
 
 export default App;
 
-const MainBG = styled.div`
-  height: auto;
-  min-height: 100%;
-  background-image: url(${background});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-`;
+const MainBG = styled.div``;
 
+const HeadCon = styled.div``;
 const Align = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  padding-inline: 1rem;
-  margin-inline: 1rem;
+  height: 100%;
+  min-height: 300px;
+  padding: 1rem;
+  z-index: 0;
 `;

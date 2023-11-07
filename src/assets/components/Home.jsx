@@ -24,7 +24,7 @@ const Home = () => {
         </Title>
 
         <ConDiv className="images">
-          <Carousel carouselData={carouselData} />
+          {/* <Carousel carouselData={carouselData} /> */}
         </ConDiv>
       </HomeCon>
     </>
@@ -33,22 +33,26 @@ const Home = () => {
 
 export default Home;
 const HomeCon = styled.div`
+  height: 100%;
+  bottom: 0;
   display: grid;
-  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 1fr 2fr;
   gap: 1rem;
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 `;
 const Title = styled.div`
   display: grid;
   grid-template-rows: 1fr 3fr;
-  gap: 35px;
+  gap: 1rem;
   color: white;
   text-align: center;
-  padding-top: 2rem;
+
   h1 {
     background: rgba(3, 10, 53, 0.85);
     -webkit-backdrop-filter: blur(1px);
     backdrop-filter: blur(1px);
-
     border-radius: 10px;
     max-width: 200px;
     font-size: 30px;
@@ -59,4 +63,6 @@ const Title = styled.div`
   }
 `;
 
-const ConDiv = styled.div``;
+const ConDiv = styled.div`
+  padding: 1rem;
+`;

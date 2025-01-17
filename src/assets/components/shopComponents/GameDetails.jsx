@@ -1,39 +1,41 @@
-import { json, useLoaderData, useParams } from "react-router-dom";
-import { loadData } from "../../../api/Getdata";
-import { useEffect, useState } from "react";
-import { getDateQuery } from "../../../api/Getdata";
+import { useLoaderData, useNavigation, useParams } from "react-router-dom";
+import { getInfo } from "../../../api/Getdata";
 import Card from "./Card";
 const GameDetails = () => {
   const { id } = useParams();
-  let [games, setGames] = useState();
-  const [queries, setQueries] = useState("");
+  const games = useLoaderData();
+  const isLoading = useNavigation();
 
-  useEffect(() => {
-    let temp;
-
-    if (id == "games") {
-      setQueries("");
-    } else {
-      setQueries(id + "&");
-    }
-    loadData("/games", queries).then((data) => setGames(data));
-
-    console.log(games);
-    console.log("hello");
-  }, [id]);
-
+  const nextPage = async (query) => {
+    getInfo({ params: query });
+  };
   return (
     <>
       <div>{id}</div>
-      <ul>
+      {games["next"] !== null && (
+        <div>
+          <button
+            onClick={() => {
+              nextPage({ id: games["next"] });
+            }}
+          >
+            next
+          </button>
+        </div>
+      )}
+      <div className="center">
         {games == undefined ? (
           <div>no data</div>
+        ) : isLoading.state === "loading" ? (
+          <div className="spinner"></div>
         ) : (
-          games["results"].map((data, index) => {
-            return <Card key={index} data={data}></Card>;
-          })
+          <ul>
+            {games["results"].map((data, index) => {
+              return <Card key={index} data={data}></Card>;
+            })}
+          </ul>
         )}
-      </ul>
+      </div>
     </>
   );
 };

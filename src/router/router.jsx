@@ -9,7 +9,7 @@ import App from "../App";
 import Home from "../assets/components/Home";
 import Shop from "../assets/components/Shop";
 import gameImageLoader from "../assets/components/Api";
-import { loadAllData, loadData } from "../api/Getdata";
+import { loadAllData, loadData, getInfo } from "../api/Getdata";
 import GameDetails from "../assets/components/shopComponents/GameDetails";
 
 const router = createBrowserRouter(
@@ -23,7 +23,7 @@ const router = createBrowserRouter(
           return loadAllData();
         }}
       >
-        <Route path=":id" element={<GameDetails />} />
+        <Route path=":id" element={<GameDetails />} loader={getInfo} />
 
         <Route />
       </Route>

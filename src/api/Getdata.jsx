@@ -17,15 +17,18 @@ const getData = async () => {
 };
 
 export const loadData = async (category, query) => {
-  if (category === null || category === undefined) {
+  if (category == null || category == undefined) {
     category = "/games";
   }
-  if (category === null || category === undefined) {
+  if (category == null || category == undefined) {
     query = "";
   }
+  console.log(category);
+  console.log(query);
   try {
+    console.log(`${url}${category}?${query}${key}`);
     const response = await axios.get(`${url}${category}?${query}${key}`);
-    console.log(response.data);
+
     return response.data;
   } catch (err) {
     console.log(err);
@@ -99,4 +102,22 @@ export const loadAllData = async () => {
   });
 };
 
+export const getInfo = async ({ params }) => {
+  const { id } = params;
+  console.log(id.length);
+
+  try {
+    let response;
+    if (id.length > 50) {
+      response = await axios.get(`${id}`);
+    } else {
+      response = await axios.get(`${url}/games?${id}&${key}`);
+    }
+
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
 export default getData;

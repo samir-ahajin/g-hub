@@ -1,7 +1,7 @@
 import { NavLink, Outlet, useLoaderData, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { loadData } from "../../api/Getdata";
+import { getInfo, loadData } from "../../api/Getdata";
 import { v4 as uuidv4 } from "uuid";
 import { getDateQuery } from "../../api/Getdata";
 
@@ -18,9 +18,6 @@ const Shop = () => {
   //   return () => {};
   // }, [category]);
 
-  const changeValue = (c) => {
-    setCategory(c);
-  };
   return (
     <>
       <ShopCon>

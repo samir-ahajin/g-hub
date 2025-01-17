@@ -25,7 +25,6 @@ const gameImageLoader = async ({ query = todaysQuery }) => {
   try {
     const response = await axios.get(`${url}${category}?${query}&${key}`);
 
-    console.log(getDates());
     console.log(response.data);
     return response.data;
   } catch (err) {
